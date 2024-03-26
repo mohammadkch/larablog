@@ -26,6 +26,7 @@
                                     <div class="form-floating theme-form-floating log-in-form">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"  name="email" value="{{old('email')}}" id="email" placeholder="ایمیل خود را وارد کنید">
                                         <label for="email">آدرس ایمیل</label>
+                                        @error('email') <span class="is-invalid">{{ $errors->first('email') }}</span> @enderror
                                     </div>
                                 </div>
 
@@ -80,7 +81,7 @@
 
                         <div class="sign-up-box">
                             <h4>حساب کاربری ندارید ؟</h4>
-                            <a href="sign-up.html">ثبت نام کنید</a>
+                            <a href="{{ url('register') }}">ثبت نام کنید</a>
                         </div>
                     </div>
                 </div>

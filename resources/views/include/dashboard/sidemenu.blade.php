@@ -42,11 +42,11 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="products.html">محصولات</a>
+                                <a href="{{ url('post') }}">محصولات</a>
                             </li>
 
                             <li>
-                                <a href="add-new-product.html">افزودن محصول جدید</a>
+                                <a href="{{ url('post/create') }}">افزودن محصول جدید</a>
                             </li>
                         </ul>
                     </li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,13 @@ Route::controller(\App\Http\Controllers\Auth\LoginRegisterController::class)->gr
     Route::post('/register', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
+//    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/logout', 'logout')->name('logout');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::get('dashboard',  [DashboardController::class, 'index'])->name('dashboard');
+
+Route::resource('post', \App\Http\Controllers\Dashboard\PostController::class);
+Route::post('post/uploadImage', [\App\Http\Controllers\Dashboard\PostController::class, 'uploadImage']);
+Route::resource('tag', \App\Http\Controllers\Dashboard\TagController::class);

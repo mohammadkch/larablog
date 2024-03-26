@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="email" class="form-control @error('name') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="آدرس ایمیل خود را وارد کنید">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="آدرس ایمیل خود را وارد کنید">
                                         <label for="email">ایمیل</label>
                                     </div>
                                 </div>
@@ -60,10 +60,13 @@
                                 <div class="col-12">
                                     <div class="forgot-box">
                                         <div class="form-check ps-0 m-0 remember-box">
-                                            <input class="checkbox_animated check-box" type="checkbox"
-                                                   id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="checkbox_animated @error('accept_terms') is_invalid @enderror check-box" type="checkbox" value="1"
+                                                   name="accept_terms" id="accept_terms">
+                                            <label class="form-check-label @error('accept_terms') is_invalid @enderror" for="accept_terms">
                                                 <span>شرایط</span> و <span>قوانین</span> را میپذیرم.</label>
+                                            @if ($errors->has('accept_terms'))
+                                                <span class="text-danger">{{ $errors->first('accept_terms') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -78,6 +81,7 @@
                             <h6>یا</h6>
                         </div>
 
+                        {{--
                         <div class="log-in-button">
                             <ul>
                                 <li>
@@ -96,14 +100,14 @@
                                 </li>
                             </ul>
                         </div>
-
+--}}
                         <div class="other-log-in">
                             <h6></h6>
                         </div>
 
                         <div class="sign-up-box">
                             <h4>حساب کاربری دارید ؟</h4>
-                            <a href="log-in.html">وارد شوید</a>
+                            <a href="{{ url('login') }}">وارد شوید</a>
                         </div>
                     </div>
                 </div>

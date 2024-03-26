@@ -64,6 +64,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/font.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/custom.css') }}">
+
 </head>
 
 
@@ -177,10 +178,12 @@
 <script type="text/javascript" src="{{ asset('assets/back/js/bootstrap-tagsinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/back/js/dropzone/dropzone.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/back/js/dropzone/dropzone-script.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/back/js/ckeditor.js') }}"></script>
+{{--<script type="text/javascript" src="{{ asset('assets/back/js/tinymce/tinymce.min.js') }}"></script>--}}
 <script type="text/javascript" src="{{ asset('assets/back/js/select2.min.js') }}"></script>
 
-<script type="text/javascript" src="{{ asset('assets/back/js/ckeditor-custom.js') }}"></script>
+<script src="https://cdn.tiny.cloud/1/rvxvjur0dn0hr0pyvu3iaf5r2vxzsoc2f5cj8ybb5kr9so8l/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript" src="{{ asset('assets/back/js/tinymce/custom_tinymce.js') }}"></script>
+
 
 
 

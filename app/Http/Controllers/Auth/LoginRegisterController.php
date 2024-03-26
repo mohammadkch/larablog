@@ -27,11 +27,14 @@ class LoginRegisterController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+
         $request->validate([
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:3|confirmed',
+            'accept_terms' => 'required|in:1'
         ]);
+
 
         User::create([
             'name' => $request->name,
@@ -40,10 +43,17 @@ class LoginRegisterController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('dashboard')
-            ->withSuccess('You have successfully registered & logged in!');
+        if( Auth::attempt($credentials) ) {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard')
+                ->withSuccess('You have successfully registered & logged in!');
+        }
+
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+            'password' => 'Bad password.',
+            'accept_terms' => 'You should check this.'
+        ])->onlyInput('email', 'password', 'accept_terms');
     }
 
     public function login()
